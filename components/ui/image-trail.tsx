@@ -1,6 +1,6 @@
 "use client"
 
-import { Children, useCallback, useEffect, useMemo, useRef } from "react"
+import { Children, useCallback, useEffect, useMemo, useRef, useState } from "react"
 import {
   AnimationSequence,
   motion,
@@ -48,11 +48,10 @@ const ImageTrail = ({
   ],
   interval = 100,
 }: ImageTrailProps) => {
-  const trailRef = useRef<TrailItem[]>([])
+  const [trail, setTrail] = useState<TrailItem[]>([])
 
   const lastAddedTimeRef = useRef<number>(0)
-  const { position: mousePosition, vector: mouseVector } =
-    useMouseVector(containerRef)
+  const { position: mousePosition } = useMouseVector(containerRef)
   const lastMousePosRef = useRef(mousePosition)
   const currentIndexRef = useRef(0)
 
@@ -73,20 +72,15 @@ const ImageTrail = ({
       currentIndexRef.current =
         (currentIndexRef.current + 1) % childrenArray.length
 
-      if (newOnTop) {
-        trailRef.current.push(newItem)
-      } else {
-        trailRef.current.unshift(newItem)
-      }
+      setTrail((prev) =>
+        newOnTop ? [...prev, newItem] : [newItem, ...prev]
+      )
     },
     [childrenArray, rotationRange, animationSequence, newOnTop]
   )
 
   const removeFromTrail = useCallback((itemId: string) => {
-    const index = trailRef.current.findIndex((item) => item.id === itemId)
-    if (index !== -1) {
-      trailRef.current.splice(index, 1)
-    }
+    setTrail((prev) => prev.filter((item) => item.id !== itemId))
   }, [])
 
   useAnimationFrame((time) => {
@@ -98,20 +92,17 @@ const ImageTrail = ({
     }
     lastMousePosRef.current = mousePosition
 
-    const currentTime = time
-
-    if (currentTime - lastAddedTimeRef.current < interval) {
+    if (time - lastAddedTimeRef.current < interval) {
       return
     }
 
-    lastAddedTimeRef.current = currentTime
-
+    lastAddedTimeRef.current = time
     addToTrail(mousePosition)
   })
 
   return (
     <div className="relative w-full h-full pointer-events-none">
-      {trailRef.current.map((item) => (
+      {trail.map((item) => (
         <TrailItem key={item.id} item={item} onComplete={removeFromTrail} />
       ))}
     </div>
