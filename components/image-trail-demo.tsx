@@ -7,13 +7,13 @@ const ImageTrailDemo = () => {
   const ref = useRef<HTMLDivElement>(null)
 
   const images = [
-    "https://drive.google.com/file/d/1nnI9CH8MlMzpcf1oHsfKW3bn3dJoygvL/view?usp=sharing",
-    "https://drive.google.com/file/d/1_Ahd98GJCkincD-_xFbZxiAJNgXtX4LG/view?usp=sharing",
-    "https://drive.google.com/file/d/1O8r6SiRQsmcXDBXHbk_nS_0j2p7Q13MP/view?usp=sharing",
-    "https://drive.google.com/file/d/1IPalBK6P25IaQ_mLrM5nzktjH1K2TpiS/view?usp=sharing",
-    "https://drive.google.com/file/d/15InelvBCf2PyKRMVzbgE0xlkXwyJPacS/view?usp=sharing",
-    "https://drive.google.com/file/d/14TV3fkLSZNRD3HLRAomqjFeJOSyPRwYP/view?usp=sharing",
-  ].map((url) => `${url}?auto=format&fit=crop&w=300&q=80`)
+    "https://drive.google.com/uc?export=view&id=1nnI9CH8MlMzpcf1oHsfKW3bn3dJoygvL",
+    "https://drive.google.com/uc?export=view&id=1_Ahd98GJCkincD-_xFbZxiAJNgXtX4LG",
+    "https://drive.google.com/uc?export=view&id=1O8r6SiRQsmcXDBXHbk_nS_0j2p7Q13MP",
+    "https://drive.google.com/uc?export=view&id=1IPalBK6P25IaQ_mLrM5nzktjH1K2TpiS",
+    "https://drive.google.com/uc?export=view&id=15InelvBCf2PyKRMVzbgE0xlkXwyJPacS",
+    "https://drive.google.com/uc?export=view&id=14TV3fkLSZNRD3HLRAomqjFeJOSyPRwYP",
+  ]
 
   return (
     <div className="flex w-full h-screen justify-center items-center bg-white relative overflow-hidden">
@@ -22,13 +22,12 @@ const ImageTrailDemo = () => {
           {images.map((url, index) => (
             <div
               key={index}
-              <div className="flex relative overflow-hidden rounded-lg">
-  <img
-    src={url}
-    alt={`Trail image ${index + 1}`}
-    className="hover:scale-110 transition-transform"
-  />
-</div>
+              className="flex relative overflow-hidden rounded-lg"
+            >
+              <img
+                src={url}
+                alt={`Trail image ${index + 1}`}
+                className="max-w-xs max-h-48 hover:scale-110 transition-transform"
               />
             </div>
           ))}
