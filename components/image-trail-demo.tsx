@@ -7,12 +7,12 @@ const ImageTrailDemo = () => {
   const ref = useRef<HTMLDivElement>(null)
 
   const images = [
-    "https://drive.google.com/uc?export=view&id=1nnI9CH8MlMzpcf1oHsfKW3bn3dJoygvL",
-    "https://drive.google.com/uc?export=view&id=1_Ahd98GJCkincD-_xFbZxiAJNgXtX4LG",
-    "https://drive.google.com/uc?export=view&id=1O8r6SiRQsmcXDBXHbk_nS_0j2p7Q13MP",
-    "https://drive.google.com/uc?export=view&id=1IPalBK6P25IaQ_mLrM5nzktjH1K2TpiS",
-    "https://drive.google.com/uc?export=view&id=15InelvBCf2PyKRMVzbgE0xlkXwyJPacS",
-    "https://drive.google.com/uc?export=view&id=14TV3fkLSZNRD3HLRAomqjFeJOSyPRwYP",
+    "/Frame 15.png",
+    "/Frame 16.png",
+    "/Frame 17.png",
+    "/Frame 18.png",
+    "/Frame 19.png",
+    "/Frame 20.png",
   ]
 
   return (
