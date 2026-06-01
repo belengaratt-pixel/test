@@ -22,14 +22,13 @@ const ImageTrailDemo = () => {
           {images.map((url, index) => (
             <div
               key={index}
-              className="flex relative overflow-hidden rounded-lg"
-            >
-              <img
-                src={url}
-                alt={`Trail image ${index + 1}`}
-                className="max-w-xs max-h-48 hover:scale-110 transition-transform"
-              />
-            </div>
+              <div className="flex relative overflow-hidden rounded-lg">
+  <img
+    src={url}
+    alt={`Trail image ${index + 1}`}
+    className="max-w-xs max-h-48 hover:scale-110 transition-transform"
+  />
+</div>
           ))}
         </ImageTrail>
       </div>
