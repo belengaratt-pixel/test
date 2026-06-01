@@ -26,7 +26,7 @@ const ImageTrailDemo = () => {
   <img
     src={url}
     alt={`Trail image ${index + 1}`}
-    className="max-w-xs max-h-36 hover:scale-90 transition-transform"
+    className="max-w-xs max-h-24 hover:scale-60 transition-transform"
   />
 </div>
           ))}
